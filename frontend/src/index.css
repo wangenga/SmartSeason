@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base:    #0d1f18;
+  --bg-card:    #142a1f;
+  --bg-card-2:  #1a3428;
+  --border:     rgba(82, 183, 136, 0.15);
+  --text:       #e8f5ee;
+  --text-muted: #7aad8f;
+  --green-glow: rgba(82, 183, 136, 0.3);
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 6px; height: 6px; }
+::-webkit-scrollbar-track  { background: var(--bg-base); }
+::-webkit-scrollbar-thumb  { background: #2d6a4f; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #52b788; }
+
+/* ── Glassmorphism utility ───────────────────────────────────── */
+.glass {
+  background: rgba(20, 42, 31, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+}
+
+.glass-dark {
+  background: rgba(13, 31, 24, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(82, 183, 136, 0.1);
+}
+
+/* ── Card hover glow ─────────────────────────────────────────── */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px var(--green-glow);
+  border-color: rgba(82, 183, 136, 0.35);
+}
+
+/* ── Gradient text ───────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #52b788, #f4a261);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Stage progress ──────────────────────────────────────────── */
+.stage-bar {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.1);
+  overflow: hidden;
+}
+.stage-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Button base ─────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+.btn:focus-visible { outline: 2px solid #52b788; outline-offset: 2px; }
+
+.btn-primary {
+  background: linear-gradient(135deg, #2d6a4f, #40916c);
+  color: #fff;
+  padding: 0.5rem 1.25rem;
+}
+.btn-primary:hover { background: linear-gradient(135deg, #40916c, #52b788); }
+
+.btn-danger {
+  background: rgba(220, 38, 38, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  padding: 0.5rem 1.25rem;
+}
+.btn-danger:hover { background: rgba(220, 38, 38, 0.25); }
+
+.btn-ghost {
+  background: rgba(82, 183, 136, 0.1);
+  color: #52b788;
+  border: 1px solid rgba(82, 183, 136, 0.2);
+  padding: 0.5rem 1.25rem;
+}
+.btn-ghost:hover { background: rgba(82, 183, 136, 0.2); }
+
+/* ── Form inputs ─────────────────────────────────────────────── */
+.field-input {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(82,183,136,0.2);
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  color: var(--text);
+  font-size: 0.9rem;
+  transition: border-color 0.15s ease;
+}
+.field-input:focus {
+  outline: none;
+  border-color: #52b788;
+  background: rgba(82,183,136,0.05);
+}
+.field-input option { background: #142a1f; color: var(--text); }
+
+/* ── Table ───────────────────────────────────────────────────── */
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+}
+.data-table td {
+  padding: 0.85rem 1rem;
+  font-size: 0.875rem;
+  border-bottom: 1px solid rgba(82,183,136,0.07);
+}
+.data-table tr:hover td { background: rgba(82,183,136,0.04); }
+
+/* ── Spinner ─────────────────────────────────────────────────── */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner {
+  width: 36px; height: 36px;
+  border: 3px solid rgba(82,183,136,0.2);
+  border-top-color: #52b788;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
